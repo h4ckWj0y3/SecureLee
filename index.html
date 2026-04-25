@@ -3,85 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>h4ckwj0y3 | Cybersecurity Consulting</title>
+<title>Cybersecurity Consulting</title>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Courier New', monospace;
-  background: black;
-  color: #00ff9f;
-  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  background: #020617;
+  color: #e2e8f0;
 }
 
-/* MATRIX BACKGROUND */
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-/* LAYOUT */
+/* CONTAINER */
 .container {
   max-width: 1000px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 60px 20px;
 }
 
-/* TEXT */
+/* HEADINGS */
 h1 {
-  font-size: 2.5em;
-  text-shadow: 0 0 10px #00ff9f;
+  font-size: 2.8em;
+  color: #22c55e;
 }
 
 h2 {
   margin-top: 60px;
-  text-shadow: 0 0 5px #00ff9f;
+  color: #38bdf8;
 }
 
+/* TEXT */
 p {
-  color: #cbd5e1;
+  line-height: 1.6;
 }
 
 /* BUTTON */
 .btn {
   display: inline-block;
-  padding: 12px 20px;
-  background: #00ff9f;
-  color: black;
+  padding: 14px 22px;
+  background: #22c55e;
+  color: #020617;
   text-decoration: none;
   font-weight: bold;
+  border-radius: 8px;
   margin-top: 20px;
-  border-radius: 5px;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 
 .btn:hover {
-  box-shadow: 0 0 15px #00ff9f;
+  box-shadow: 0 0 15px #22c55e;
 }
 
-/* CARDS */
+/* CARD */
 .card {
-  background: rgba(0,0,0,0.6);
-  border: 1px solid #00ff9f;
-  padding: 20px;
+  background: #0f172a;
+  padding: 25px;
   margin-top: 20px;
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  border: 1px solid #1e293b;
+  transition: 0.3s;
 }
 
-/* TYPING */
-#typing {
-  border-right: 2px solid #00ff9f;
-  padding-right: 5px;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(34,197,94,0.2);
+}
+
+/* HIGHLIGHT */
+.highlight {
+  color: #22c55e;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 /* SCROLL ANIMATION */
 .hidden {
   opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
 }
 
 .show {
@@ -89,18 +92,30 @@ p {
   transform: translateY(0);
 }
 
+/* TYPING */
+#typing {
+  border-right: 2px solid #22c55e;
+  padding-right: 5px;
+}
+
 /* MARQUEE */
-.marquee {
+.marquee-wrapper {
   overflow: hidden;
+  margin-top: 20px;
+}
+
+.marquee {
   white-space: nowrap;
-  margin: 10px 0;
+  overflow: hidden;
 }
 
 .marquee-content span {
-  margin: 0 20px;
-  border: 1px solid #00ff9f;
+  display: inline-block;
+  margin: 0 15px;
   padding: 8px 14px;
+  border: 1px solid #22c55e;
   border-radius: 20px;
+  color: #22c55e;
 }
 
 .marquee-left .marquee-content {
@@ -122,32 +137,45 @@ p {
   0% { transform: translateX(-50%); }
   100% { transform: translateX(0); }
 }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
-
 <div class="container">
 
+<!-- HERO -->
 <h1 id="typing"></h1>
 
 <p class="hidden">
-Cybersecurity & Compliance That Actually Reduces Risk across IT, OT, Cloud & AI.
+Cybersecurity & Compliance that strengthens organizations across 
+<span class="highlight">IT, OT, cloud, and AI</span>.
+</p>
+
+<p class="hidden">
+Helping professionals break into cybersecurity with practical, real-world strategies.
 </p>
 
 <a href="https://tidycal.com/1hannajylee" class="btn hidden">Book a Free Call</a>
 
+<!-- WHY -->
 <h2 class="hidden">Why Work With Me</h2>
 
-<div class="card hidden">
-<p>✔ IT & OT Security Experience</p>
-<p>✔ M&A Cybersecurity Expertise</p>
-<p>✔ Risk-Focused Approach</p>
-<p>✔ Real-World Strategies</p>
+<div class="grid">
+  <div class="card hidden">IT & OT Security Experience</div>
+  <div class="card hidden">M&A Cybersecurity Expertise</div>
+  <div class="card hidden">Risk-Focused Approach</div>
+  <div class="card hidden">Practical, Real-World Strategies</div>
 </div>
 
+<!-- SERVICES -->
 <h2 class="hidden">For Organizations</h2>
 
 <div class="card hidden">
@@ -160,51 +188,58 @@ Cybersecurity & Compliance That Actually Reduces Risk across IT, OT, Cloud & AI.
 </ul>
 </div>
 
-<a href="https://tidycal.com/1hannajylee" class="btn hidden">Discuss Security Needs</a>
+<a href="https://tidycal.com/1hannajylee" class="btn hidden">Discuss Your Needs</a>
 
+<!-- COACHING -->
 <h2 class="hidden">For Individuals</h2>
 
 <div class="card hidden">
 <ul>
 <li>Career Roadmap</li>
 <li>Hands-on Guidance</li>
-<li>Interview Prep</li>
+<li>Interview Preparation</li>
 </ul>
 </div>
 
-<a href="https://tidycal.com/1hannajylee" class="btn hidden">Start Your Journey</a>
+<a href="YOUR-TIDYCAL-LINK" class="btn hidden">Start Your Journey</a>
 
+<!-- FRAMEWORKS -->
 <h2 class="hidden">Frameworks & Standards</h2>
+
+<div class="marquee-wrapper hidden">
 
 <div class="marquee marquee-left">
 <div class="marquee-content">
-<span>ISO 27001</span><span>NIST</span><span>CIS</span><span>GDPR</span>
-<span>ISO 27001</span><span>NIST</span><span>CIS</span><span>GDPR</span>
+<span>ISO 27001</span><span>ISO 27017</span><span>NIST</span><span>CIS</span>
+<span>ISO 27001</span><span>ISO 27017</span><span>NIST</span><span>CIS</span>
 </div>
 </div>
 
 <div class="marquee marquee-right">
 <div class="marquee-content">
-<span>OWASP</span><span>MITRE</span><span>PCI DSS</span>
-<span>OWASP</span><span>MITRE</span><span>PCI DSS</span>
+<span>OWASP</span><span>MITRE</span><span>PCI DSS</span><span>GDPR</span>
+<span>OWASP</span><span>MITRE</span><span>PCI DSS</span><span>GDPR</span>
 </div>
 </div>
 
-<h2 class="hidden">Let’s Secure What Matters</h2>
+</div>
+
+<!-- CTA -->
+<h2 class="hidden">Secure Your Organization or Career</h2>
 
 <a href="https://tidycal.com/1hannajylee" class="btn hidden">Book Your Call</a>
 
 </div>
 
 <script>
-/* TYPING EFFECT */
-const text = "h4ckwj0y3 // Cybersecurity Consulting";
+/* TYPING */
+const text = "Cybersecurity Consulting & Coaching";
 let i = 0;
 function type() {
   if (i < text.length) {
     document.getElementById("typing").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 50);
+    setTimeout(type, 40);
   }
 }
 type();
@@ -218,38 +253,6 @@ const observer = new IntersectionObserver(entries => {
   });
 });
 document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-
-/* MATRIX EFFECT */
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-
-const letters = "01";
-const fontSize = 14;
-const columns = canvas.width / fontSize;
-const drops = Array.from({length: columns}).fill(1);
-
-function draw(){
-  ctx.fillStyle = "rgba(0,0,0,0.05)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  ctx.fillStyle = "#00ff9f";
-  ctx.font = fontSize + "px monospace";
-
-  for(let i=0;i<drops.length;i++){
-    const text = letters[Math.floor(Math.random()*letters.length)];
-    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
-
-    if(drops[i]*fontSize > canvas.height && Math.random()>0.975){
-      drops[i] = 0;
-    }
-    drops[i]++;
-  }
-}
-
-setInterval(draw, 33);
 </script>
 
 </body>
