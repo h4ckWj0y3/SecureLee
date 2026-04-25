@@ -3,257 +3,1734 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cybersecurity Consulting</title>
-
+<title>[Your Name] — Cybersecurity Consultant · IT/OT · M&A · Compliance</title>
+<meta name="description" content="Specialist cybersecurity consulting across IT/OT convergence, M&A due diligence, ISO 27001, AI security and compliance. Based in Seoul. Serving global clients.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   ROOT & RESET
+============================================================ */
+:root {
+  --ink: #0A0B0D;
+  --ink-soft: #1C1E24;
+  --surface: #12141A;
+  --surface2: #1A1D25;
+  --line: rgba(255,255,255,0.08);
+  --line-bright: rgba(255,255,255,0.15);
+  --text: #E8EAF0;
+  --text-muted: #8B909E;
+  --text-dim: #555B6A;
+
+  --accent: #00D47E;        /* electric green — primary action */
+  --accent-dim: rgba(0,212,126,0.12);
+  --accent-dim2: rgba(0,212,126,0.06);
+  --amber: #F5A623;
+  --amber-dim: rgba(245,166,35,0.12);
+  --blue: #4A9EFF;
+  --blue-dim: rgba(74,158,255,0.12);
+  --red: #FF5252;
+
+  --grid-col: rgba(255,255,255,0.03);
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --r: 8px;
+  --r-lg: 14px;
+  --max: 1200px;
+  --nav-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #020617;
-  color: #e2e8f0;
-}
-
-/* CONTAINER */
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 60px 20px;
-}
-
-/* HEADINGS */
-h1 {
-  font-size: 2.8em;
-  color: #22c55e;
-}
-
-h2 {
-  margin-top: 60px;
-  color: #38bdf8;
-}
-
-/* TEXT */
-p {
+  font-family: var(--font-body);
+  background: var(--ink);
+  color: var(--text);
   line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* BUTTON */
-.btn {
-  display: inline-block;
-  padding: 14px 22px;
-  background: #22c55e;
-  color: #020617;
+/* ============================================================
+   GRID TEXTURE
+============================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid-col) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-col) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   NAV
+============================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(10,11,13,0.92);
+  backdrop-filter: blur(20px);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text);
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  margin-top: 20px;
-  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo .slash { color: var(--accent); }
+.nav-logo .status-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--accent); }
+  50% { opacity: .6; box-shadow: 0 0 14px var(--accent); }
 }
 
-.btn:hover {
-  box-shadow: 0 0 15px #22c55e;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .15s;
+  letter-spacing: .02em;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: opacity .15s, transform .1s;
+  white-space: nowrap;
+}
+.nav-cta:hover { opacity: .88; transform: translateY(-1px); }
+
+.nav-mobile-btn { display: none; }
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: calc(var(--nav-h) + 4rem) 2.5rem 5rem;
+  overflow: hidden;
 }
 
-/* CARD */
-.card {
-  background: #0f172a;
-  padding: 25px;
-  margin-top: 20px;
-  border-radius: 12px;
-  border: 1px solid #1e293b;
-  transition: 0.3s;
+/* Radial glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 60vw; height: 60vw;
+  background: radial-gradient(ellipse at center, rgba(0,212,126,0.07) 0%, transparent 65%);
+  pointer-events: none;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(34,197,94,0.2);
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
-/* HIGHLIGHT */
-.highlight {
-  color: #22c55e;
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.75rem;
+}
+.eyebrow-line {
+  width: 32px; height: 1px;
+  background: var(--accent);
+}
+.eyebrow-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
-/* GRID */
-.grid {
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 90px);
+  font-weight: 800;
+  line-height: .95;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+}
+.hero-h1 .line-accent { color: var(--accent); }
+.hero-h1 .line-dim { color: var(--text-dim); }
+
+.hero-sub {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.75;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+.hero-sub strong { color: var(--text); font-weight: 500; }
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 13px 28px;
+  border-radius: 100px;
+  background: var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: opacity .15s, transform .15s;
+}
+.btn-primary:hover { opacity: .88; transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 13px 28px;
+  border-radius: 100px;
+  border: 1px solid var(--line-bright);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: border-color .15s, color .15s;
+}
+.btn-ghost:hover { border-color: var(--text-muted); color: var(--text); }
+
+/* HERO CARD */
+.hero-card {
+  background: var(--surface);
+  border: 1px solid var(--line-bright);
+  border-radius: var(--r-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+.card-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.expertise-list { display: flex; flex-direction: column; gap: 10px; }
+.expertise-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--r);
+  border: 1px solid transparent;
+  transition: border-color .15s, background .15s;
+  cursor: default;
+}
+.expertise-item:hover {
+  border-color: var(--line-bright);
+  background: var(--surface2);
+}
+.ei-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ei-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  flex: 1;
+}
+.ei-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  border: 1px solid;
+}
+
+.hero-card-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.hcf-stat { text-align: center; }
+.hcf-num {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: .02em;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.hcf-label { font-size: 11px; color: var(--text-dim); }
+.hcf-divider { width: 1px; height: 32px; background: var(--line); }
+
+/* ============================================================
+   SECTION UTILS
+============================================================ */
+section { position: relative; z-index: 1; }
+.section-inner { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+.section-pad { padding: 7rem 0; }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+.sl-line { width: 24px; height: 1px; background: var(--accent); }
+.sl-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+h2.section-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.section-desc {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 3rem;
+}
+
+/* ============================================================
+   TRUST BAR
+============================================================ */
+.trust-bar {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem 0;
+  background: var(--surface);
+  overflow: hidden;
+}
+.trust-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.trust-item .ti-icon { color: var(--accent); font-size: 14px; }
+.trust-divider { width: 1px; height: 16px; background: var(--line); }
+
+/* ============================================================
+   SERVICES
+============================================================ */
+.services-section { background: var(--surface); }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.service-card {
+  background: var(--surface);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background .2s;
+}
+.service-card:hover { background: var(--surface2); }
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+.service-card:hover::after { transform: scaleX(1); }
+
+.sc-number {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .1em;
+  margin-bottom: 1.25rem;
+}
+.sc-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--r);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--line);
+}
+.sc-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin-bottom: .75rem;
+  line-height: 1.1;
+}
+.sc-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.sc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.sc-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  letter-spacing: .04em;
+}
+
+/* FEATURED SERVICE — spans full width */
+.service-card.featured {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 3rem;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0,212,126,0.05) 0%, transparent 60%);
+  border-top: 1px solid var(--accent);
+}
+.service-card.featured::after { display: none; }
+.featured-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  letter-spacing: .06em;
+  margin-bottom: 1rem;
+}
+.featured-points { display: flex; flex-direction: column; gap: 10px; }
+.fp {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.fp-dot { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
+
+/* ============================================================
+   IT/OT SECTION
+============================================================ */
+.itot-section { background: var(--ink); }
+.itot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.itot-visual {
+  position: relative;
+}
+.purdue-diagram {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.purdue-diagram::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,212,126,0.04) 0%, transparent 50%);
+}
+.purdue-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .1em;
+  margin-bottom: 1.25rem;
+}
+.purdue-levels { display: flex; flex-direction: column; gap: 6px; }
+.pl {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--r);
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: 500;
+  transition: transform .15s;
+  position: relative;
+  z-index: 1;
+}
+.pl:hover { transform: translateX(4px); }
+.pl-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  width: 22px;
+  flex-shrink: 0;
+}
+.pl-name { flex: 1; }
+.pl-examples { font-size: 10px; opacity: .65; font-family: var(--font-mono); }
+
+/* Connector line between IT and OT */
+.purdue-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  padding: 0 12px;
+}
+.pd-line { flex: 1; height: 1px; border-top: 1px dashed rgba(245,166,35,0.4); }
+.pd-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--amber);
+  letter-spacing: .06em;
+  white-space: nowrap;
 }
 
-/* SCROLL ANIMATION */
-.hidden {
+.itot-content {}
+.itot-stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.itot-stat {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.25rem;
+}
+.is-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.is-label { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+/* ============================================================
+   M&A SECTION
+============================================================ */
+.ma-section {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.ma-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+.ma-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid rgba(245,166,35,0.25);
+  letter-spacing: .05em;
+}
+.ma-phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.ma-phase {
+  background: var(--surface);
+  padding: 1.75rem 1.5rem;
+  position: relative;
+  transition: background .2s;
+}
+.ma-phase:hover { background: var(--surface2); }
+.ma-phase-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--surface2);
+  line-height: 1;
+  margin-bottom: .5rem;
+  transition: color .2s;
+}
+.ma-phase:hover .ma-phase-num { color: var(--amber); }
+.ma-phase-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: .75rem;
+  color: var(--text);
+}
+.ma-phase-desc { font-size: 12px; color: var(--text-muted); line-height: 1.65; }
+.ma-phase-items { display: flex; flex-direction: column; gap: 4px; margin-top: .75rem; }
+.ma-item {
+  font-size: 11px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+.ma-item::before { content: '—'; color: var(--amber); flex-shrink: 0; }
+
+/* ============================================================
+   COMPLIANCE SECTION
+============================================================ */
+.compliance-section { background: var(--ink); }
+.compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+.fw-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: border-color .15s, background .15s;
+  cursor: default;
+}
+.fw-chip:hover {
+  border-color: var(--line-bright);
+  background: var(--surface2);
+}
+.fw-chip-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  letter-spacing: .03em;
+}
+.fw-chip-content {}
+.fw-chip-name { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+.fw-chip-sub { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+/* ============================================================
+   PROCESS SECTION
+============================================================ */
+.process-section { background: var(--surface); border-top: 1px solid var(--line); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: .3;
+}
+.process-step { position: relative; text-align: center; }
+.ps-num {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--surface2);
+  border: 1px solid var(--line-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 auto 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.ps-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: .5rem;
+}
+.ps-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+/* ============================================================
+   RESOURCES SECTION
+============================================================ */
+.resources-section { background: var(--ink); }
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.resource-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .2s, transform .2s;
+  position: relative;
+  overflow: hidden;
+}
+.resource-card:hover {
+  border-color: var(--line-bright);
+  transform: translateY(-3px);
+}
+.resource-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s;
+}
+.resource-card:hover::before { transform: scaleX(1); }
+.rc-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  letter-spacing: .04em;
+  display: inline-block;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+.rc-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin-bottom: .5rem;
+  line-height: 1.1;
+}
+.rc-desc { font-size: 12px; color: var(--text-muted); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+.rc-action {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: .04em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ============================================================
+   COACHING SECTION
+============================================================ */
+.coaching-section {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.coaching-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.coaching-paths { display: flex; flex-direction: column; gap: 10px; margin-top: 2rem; }
+.coaching-path {
+  background: var(--surface2);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: border-color .15s;
+}
+.coaching-path:hover { border-color: var(--accent); }
+.cp-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--r);
+  background: var(--accent-dim);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.cp-title { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+.cp-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+.coaching-offer {
+  background: linear-gradient(135deg, rgba(0,212,126,0.08) 0%, transparent 60%);
+  border: 1px solid rgba(0,212,126,0.2);
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.coaching-offer h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+.coaching-offer p { font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
+.coaching-includes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 2rem; }
+.ci {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.ci-check { color: var(--accent); font-size: 14px; }
+
+/* ============================================================
+   CTA BANNER
+============================================================ */
+.cta-banner {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(ellipse at center, rgba(0,212,126,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-banner-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 6rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+.cta-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -.01em;
+  line-height: .95;
+  margin-bottom: .75rem;
+}
+.cta-h2 .ca { color: var(--accent); }
+.cta-sub {
+  font-size: 15px;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.75;
+}
+.cta-actions { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+.cta-note {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: .06em;
+  text-align: center;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer {
+  background: var(--ink);
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.footer-logo span { color: var(--accent); }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color .15s;
+}
+.footer-links a:hover { color: var(--text-muted); }
+.footer-copy { font-size: 11px; color: var(--text-dim); }
+
+/* ============================================================
+   ANIMATIONS
+============================================================ */
+.fade-up {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
 }
-
-.show {
+.fade-up.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* TYPING */
-#typing {
-  border-right: 2px solid #22c55e;
-  padding-right: 5px;
+/* Stagger children */
+.stagger > * { transition-delay: calc(var(--i, 0) * 80ms); }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .service-card.featured { grid-template-columns: 1fr; }
+  .itot-grid { grid-template-columns: 1fr; }
+  .ma-phases { grid-template-columns: 1fr 1fr; }
+  .coaching-inner { grid-template-columns: 1fr; }
+  .cta-banner-inner { grid-template-columns: 1fr; }
+  .cta-actions { align-items: flex-start; flex-direction: row; }
+  .process-steps { grid-template-columns: 1fr 1fr; }
 }
 
-/* MARQUEE */
-.marquee-wrapper {
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-.marquee {
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.marquee-content span {
-  display: inline-block;
-  margin: 0 15px;
-  padding: 8px 14px;
-  border: 1px solid #22c55e;
-  border-radius: 20px;
-  color: #22c55e;
-}
-
-.marquee-left .marquee-content {
-  display: inline-block;
-  animation: left 25s linear infinite;
-}
-
-.marquee-right .marquee-content {
-  display: inline-block;
-  animation: right 25s linear infinite;
-}
-
-@keyframes left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-@keyframes right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
-}
-
-/* MOBILE */
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .hero { padding: calc(var(--nav-h) + 2rem) 1.25rem 3rem; }
+  .section-inner { padding: 0 1.25rem; }
+  .section-pad { padding: 4rem 0; }
+  .services-grid { grid-template-columns: 1fr; }
+  .ma-phases { grid-template-columns: 1fr; }
+  .process-steps { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .process-steps::before { display: none; }
+  .trust-inner { gap: 1rem; }
+  .itot-stat-row { grid-template-columns: 1fr 1fr; }
+  h2.section-h2 { font-size: 32px; }
+  .hero-h1 { font-size: 48px; }
+  .cta-banner-inner { padding: 3rem 1.25rem; }
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<!-- ============================================================
+     NAV
+============================================================ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <span class="status-dot"></span>
+    <span><span class="slash">//</span> Your Name</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#itot">IT/OT</a></li>
+    <li><a href="#ma">M&amp;A</a></li>
+    <li><a href="#compliance">Compliance</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#coaching">Coaching</a></li>
+  </ul>
+  <a href="https://tidycal.com/1hannajylee" class="nav-cta" target="_blank">Book a Discovery Session</a>
+</nav>
 
-<!-- HERO -->
-<h1 id="typing"></h1>
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow fade-up">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Cybersecurity Consultant · Seoul · Global</span>
+      </div>
 
-<p class="hidden">
-Cybersecurity & Compliance that strengthens organizations across 
-<span class="highlight">IT, OT, cloud, and AI</span>.
-</p>
+      <h1 class="hero-h1 fade-up" style="transition-delay:.1s">
+        Security for<br>
+        <span class="line-accent">Complex</span><br>
+        <span class="line-dim">Organisations</span>
+      </h1>
 
-<p class="hidden">
-Helping professionals break into cybersecurity with practical, real-world strategies.
-</p>
+      <p class="hero-sub fade-up" style="transition-delay:.2s">
+        I help industrial companies, fintech, and M&amp;A-active businesses close the gap between <strong>IT and OT security</strong>, navigate <strong>regulatory compliance</strong>, and survive the scrutiny of <strong>acquisition due diligence</strong> — before it becomes a problem.
+      </p>
 
-<a href="https://tidycal.com/1hannajylee" class="btn hidden">Book a Free Call</a>
+      <div class="hero-ctas fade-up" style="transition-delay:.3s">
+        <a href="https://tidycal.com/1hannajylee" class="btn-primary" target="_blank">
+          Book a Discovery Session
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#resources" class="btn-ghost">Free risk assessment →</a>
+      </div>
+    </div>
 
-<!-- WHY -->
-<h2 class="hidden">Why Work With Me</h2>
+    <div class="hero-card fade-up" style="transition-delay:.4s">
+      <div class="card-label">// Expertise</div>
+      <div class="expertise-list">
+        <div class="expertise-item">
+          <div class="ei-dot" style="background:#F5A623;box-shadow:0 0 6px rgba(245,166,35,.4)"></div>
+          <span class="ei-label">IT / OT Convergence Security</span>
+          <span class="ei-tag" style="color:var(--amber);border-color:rgba(245,166,35,.3);background:var(--amber-dim)">Specialist</span>
+        </div>
+        <div class="expertise-item">
+          <div class="ei-dot" style="background:#FF5252;box-shadow:0 0 6px rgba(255,82,82,.4)"></div>
+          <span class="ei-label">M&amp;A Cyber Due Diligence</span>
+          <span class="ei-tag" style="color:var(--red);border-color:rgba(255,82,82,.3);background:rgba(255,82,82,.1)">High demand</span>
+        </div>
+        <div class="expertise-item">
+          <div class="ei-dot" style="background:var(--accent);box-shadow:0 0 6px rgba(0,212,126,.4)"></div>
+          <span class="ei-label">ISO 27001 / 42001 Readiness</span>
+          <span class="ei-tag" style="color:var(--accent);border-color:rgba(0,212,126,.3);background:var(--accent-dim)">Certifiable</span>
+        </div>
+        <div class="expertise-item">
+          <div class="ei-dot" style="background:var(--blue);box-shadow:0 0 6px rgba(74,158,255,.4)"></div>
+          <span class="ei-label">AI Security &amp; Governance</span>
+          <span class="ei-tag" style="color:var(--blue);border-color:rgba(74,158,255,.3);background:var(--blue-dim)">Emerging</span>
+        </div>
+        <div class="expertise-item">
+          <div class="ei-dot" style="background:#A78BFA;box-shadow:0 0 6px rgba(167,139,250,.4)"></div>
+          <span class="ei-label">Compliance: GDPR · NIS2 · HIPAA</span>
+          <span class="ei-tag" style="color:#A78BFA;border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.1)">Global</span>
+        </div>
+      </div>
 
-<div class="grid">
-  <div class="card hidden">IT & OT Security Experience</div>
-  <div class="card hidden">M&A Cybersecurity Expertise</div>
-  <div class="card hidden">Risk-Focused Approach</div>
-  <div class="card hidden">Practical, Real-World Strategies</div>
+      <div class="hero-card-footer">
+        <div class="hcf-stat">
+          <div class="hcf-num" style="color:var(--accent)">100+</div>
+          <div class="hcf-label">Controls assessed</div>
+        </div>
+        <div class="hcf-divider"></div>
+        <div class="hcf-stat">
+          <div class="hcf-num">IT+OT</div>
+          <div class="hcf-label">Both environments</div>
+        </div>
+        <div class="hcf-divider"></div>
+        <div class="hcf-stat">
+          <div class="hcf-num">6+</div>
+          <div class="hcf-label">Frameworks covered</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST BAR
+============================================================ -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="ti-icon">✦</span> ISO 27001 gap analysis</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="ti-icon">✦</span> ISO 42001 AI governance</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="ti-icon">✦</span> IEC 62443 OT security</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="ti-icon">✦</span> M&amp;A cyber due diligence</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="ti-icon">✦</span> GDPR · NIS2 · HIPAA · PCI DSS · SOC 2 · PIPA</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="ti-icon">✦</span> Seoul · Europe · Global</div>
+  </div>
 </div>
 
-<!-- SERVICES -->
-<h2 class="hidden">For Organizations</h2>
+<!-- ============================================================
+     SERVICES
+============================================================ -->
+<section class="services-section section-pad" id="services">
+  <div class="section-inner">
+    <div class="section-label fade-up">
+      <div class="sl-line"></div>
+      <span class="sl-text">Services</span>
+    </div>
+    <h2 class="section-h2 fade-up">What I do</h2>
+    <p class="section-desc fade-up">Three pillars — built around the convergence of IT and OT environments, the complexity of M&amp;A, and the rigour of global compliance.</p>
 
-<div class="card hidden">
-<ul>
-<li>Cybersecurity Assessments</li>
-<li>ISO 27001 Readiness</li>
-<li>Risk Management</li>
-<li>M&A Cybersecurity</li>
-<li>AI Security</li>
-</ul>
-</div>
+    <div class="services-grid fade-up">
 
-<a href="https://tidycal.com/1hannajylee" class="btn hidden">Discuss Your Needs</a>
+      <!-- FEATURED: M&A -->
+      <div class="service-card featured">
+        <div>
+          <div class="featured-badge">★ Specialist service</div>
+          <div class="sc-icon" style="background:var(--amber-dim);border-color:rgba(245,166,35,.2)">💼</div>
+          <div class="sc-title" style="color:var(--amber)">M&amp;A Cyber<br>Due Diligence</div>
+          <p class="sc-desc">Cyber risk assessment for acquisitions, carve-outs, and private equity transactions. I find the security liabilities before they become post-close surprises — and I help acquisition targets clean house before going to market.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Pre-acquisition assessment</span>
+            <span class="sc-tag">Security risk pricing</span>
+            <span class="sc-tag">Post-merger integration</span>
+            <span class="sc-tag">Carve-out security</span>
+          </div>
+        </div>
+        <div class="featured-points">
+          <div class="fp"><span class="fp-dot">→</span> <span><strong style="color:var(--text)">For acquirers:</strong> Pre-deal cyber risk assessment to quantify security liabilities, identify deal-breakers, and plan integration security from day one.</span></div>
+          <div class="fp"><span class="fp-dot">→</span> <span><strong style="color:var(--text)">For targets:</strong> Pre-market security remediation — get your house in order before due diligence scrutiny, command a stronger valuation, close faster.</span></div>
+          <div class="fp"><span class="fp-dot">→</span> <span><strong style="color:var(--text)">Post-close:</strong> Security programme stand-up for newly acquired entities — rapidly achieving baseline compliance with acquirer standards.</span></div>
+          <div class="fp"><span class="fp-dot">→</span> <span><strong style="color:var(--text)">PE portfolio:</strong> Systematic security assessments across portfolio companies — centralised risk view, prioritised remediation, investment-grade reporting.</span></div>
+        </div>
+      </div>
 
-<!-- COACHING -->
-<h2 class="hidden">For Individuals</h2>
+      <!-- SERVICE 1: GAP ANALYSIS -->
+      <div class="service-card">
+        <div class="sc-number">01</div>
+        <div class="sc-icon" style="background:var(--accent-dim);border-color:rgba(0,212,126,.2)">🎯</div>
+        <div class="sc-title">Gap Analysis &amp; Assessment</div>
+        <p class="sc-desc">Structured assessment of your current security posture against your target framework — with a costed, prioritised remediation roadmap. No fluff, no generic recommendations.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">ISO 27001</span>
+          <span class="sc-tag">ISO 42001</span>
+          <span class="sc-tag">SOC 2</span>
+          <span class="sc-tag">NIS2</span>
+          <span class="sc-tag">IEC 62443</span>
+        </div>
+      </div>
 
-<div class="card hidden">
-<ul>
-<li>Career Roadmap</li>
-<li>Hands-on Guidance</li>
-<li>Interview Preparation</li>
-</ul>
-</div>
+      <!-- SERVICE 2: COMPLIANCE -->
+      <div class="service-card">
+        <div class="sc-number">02</div>
+        <div class="sc-icon" style="background:var(--blue-dim);border-color:rgba(74,158,255,.2)">⚖️</div>
+        <div class="sc-title">Compliance &amp; Risk Management</div>
+        <p class="sc-desc">Hands-on compliance programme delivery — from data mapping and DPIAs to policy frameworks and audit readiness. Covering GDPR, HIPAA, PCI DSS, SOC 2, PIPA, and NIS2.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">GDPR / UK GDPR</span>
+          <span class="sc-tag">HIPAA</span>
+          <span class="sc-tag">PCI DSS</span>
+          <span class="sc-tag">PIPA</span>
+        </div>
+      </div>
 
-<a href="YOUR-TIDYCAL-LINK" class="btn hidden">Start Your Journey</a>
+      <!-- SERVICE 3: AI SECURITY -->
+      <div class="service-card">
+        <div class="sc-number">03</div>
+        <div class="sc-icon" style="background:rgba(167,139,250,.12);border-color:rgba(167,139,250,.2)">🤖</div>
+        <div class="sc-title">AI Security &amp; Governance</div>
+        <p class="sc-desc">Secure your AI systems and govern their use — from LLM security assessments mapped to OWASP LLM Top 10, to ISO 42001 AI management system implementation.</p>
+        <div class="sc-tags">
+          <span class="sc-tag">ISO 42001</span>
+          <span class="sc-tag">OWASP LLM Top 10</span>
+          <span class="sc-tag">AI policy</span>
+          <span class="sc-tag">EU AI Act prep</span>
+        </div>
+      </div>
 
-<!-- FRAMEWORKS -->
-<h2 class="hidden">Frameworks & Standards</h2>
+    </div>
+  </div>
+</section>
 
-<div class="marquee-wrapper hidden">
+<!-- ============================================================
+     IT / OT SECTION
+============================================================ -->
+<section class="itot-section section-pad" id="itot">
+  <div class="section-inner">
+    <div class="itot-grid">
+      <div class="itot-visual fade-up">
+        <div class="purdue-diagram">
+          <div class="purdue-label">// Purdue model — IT/OT convergence zone</div>
+          <div class="purdue-levels">
+            <!-- IT layers -->
+            <div class="pl" style="background:rgba(74,158,255,.08);border-color:rgba(74,158,255,.25);color:var(--blue)">
+              <span class="pl-num">L4</span>
+              <span class="pl-name">Enterprise IT</span>
+              <span class="pl-examples">ERP · CRM · Email</span>
+            </div>
+            <div class="pl" style="background:rgba(74,158,255,.05);border-color:rgba(74,158,255,.2);color:var(--blue)">
+              <span class="pl-num">L3</span>
+              <span class="pl-name">Operations / MES</span>
+              <span class="pl-examples">Historian · SCADA server</span>
+            </div>
 
-<div class="marquee marquee-left">
-<div class="marquee-content">
-<span>ISO 27001</span><span>ISO 27017</span><span>NIST</span><span>CIS</span>
-<span>ISO 27001</span><span>ISO 27017</span><span>NIST</span><span>CIS</span>
-</div>
-</div>
+            <div class="purdue-divider">
+              <div class="pd-line"></div>
+              <div class="pd-label">⚡ Convergence zone — highest risk</div>
+              <div class="pd-line"></div>
+            </div>
 
-<div class="marquee marquee-right">
-<div class="marquee-content">
-<span>OWASP</span><span>MITRE</span><span>PCI DSS</span><span>GDPR</span>
-<span>OWASP</span><span>MITRE</span><span>PCI DSS</span><span>GDPR</span>
-</div>
-</div>
+            <!-- OT layers -->
+            <div class="pl" style="background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.3);color:var(--amber)">
+              <span class="pl-num">L2</span>
+              <span class="pl-name">Supervisory Control</span>
+              <span class="pl-examples">HMI · SCADA · DCS</span>
+            </div>
+            <div class="pl" style="background:rgba(245,166,35,.05);border-color:rgba(245,166,35,.2);color:var(--amber)">
+              <span class="pl-num">L1</span>
+              <span class="pl-name">Control Layer</span>
+              <span class="pl-examples">PLC · RTU · Drives</span>
+            </div>
+            <div class="pl" style="background:rgba(245,166,35,.04);border-color:rgba(245,166,35,.15);color:var(--amber)">
+              <span class="pl-num">L0</span>
+              <span class="pl-name">Physical Process</span>
+              <span class="pl-examples">Sensors · Actuators</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-</div>
+      <div class="itot-content fade-up" style="transition-delay:.15s">
+        <div class="section-label">
+          <div class="sl-line"></div>
+          <span class="sl-text">IT / OT Convergence</span>
+        </div>
+        <h2 class="section-h2">I speak<br>both<br>languages</h2>
+        <p class="section-desc" style="margin-bottom:1.5rem">Most consultants live in one world. IT security experts are uncomfortable with PLCs, Purdue models, and safety-critical systems. OT engineers don't understand ISO 27001 or GDPR. I bridge both — and that's increasingly rare.</p>
 
-<!-- CTA -->
-<h2 class="hidden">Secure Your Organization or Career</h2>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin-bottom:0">NIS2 has placed industrial operators under new mandatory security obligations. ICS/SCADA environments face threats that IT-only security programmes simply miss. My assessments cover the full attack surface — from the enterprise boundary down to Level 0.</p>
 
-<a href="https://tidycal.com/1hannajylee" class="btn hidden">Book Your Call</a>
+        <div class="itot-stat-row">
+          <div class="itot-stat">
+            <div class="is-num">NIS2</div>
+            <div class="is-label">Mandatory for EU industrial operators from Oct 2024</div>
+          </div>
+          <div class="itot-stat">
+            <div class="is-num">62443</div>
+            <div class="is-label">IEC 62443 — the OT security standard most IT consultants can't assess</div>
+          </div>
+          <div class="itot-stat">
+            <div class="is-num">L0–L4</div>
+            <div class="is-label">Full Purdue model coverage — not just the IT layers</div>
+          </div>
+          <div class="itot-stat">
+            <div class="is-num">30–50%</div>
+            <div class="is-label">Premium OT work commands over equivalent IT security engagements</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-</div>
+<!-- ============================================================
+     M&A SECTION
+============================================================ -->
+<section class="ma-section section-pad" id="ma">
+  <div class="section-inner">
+    <div class="ma-header fade-up">
+      <div>
+        <div class="section-label" style="margin-bottom:.75rem">
+          <div class="sl-line" style="background:var(--amber)"></div>
+          <span class="sl-text" style="color:var(--amber)">M&amp;A Cyber Due Diligence</span>
+        </div>
+        <h2 class="section-h2">Find the skeletons<br>before you sign</h2>
+        <p class="section-desc" style="margin-bottom:0">Cyber liabilities discovered post-close are expensive. Poor security posture tanks valuations. I help acquirers price risk accurately and help targets get acquisition-ready — on both sides of the table.</p>
+      </div>
+      <div>
+        <div class="ma-badge">★ High-value niche</div>
+      </div>
+    </div>
 
+    <div class="ma-phases fade-up">
+      <div class="ma-phase">
+        <div class="ma-phase-num">01</div>
+        <div class="ma-phase-title">Pre-LOI<br>Screening</div>
+        <p class="ma-phase-desc">Rapid surface-level assessment from public sources — identify red flags before committing to full diligence.</p>
+        <div class="ma-phase-items">
+          <div class="ma-item">OSINT & threat landscape review</div>
+          <div class="ma-item">Data breach history check</div>
+          <div class="ma-item">Regulatory exposure scan</div>
+          <div class="ma-item">Tech stack risk profile</div>
+        </div>
+      </div>
+      <div class="ma-phase">
+        <div class="ma-phase-num">02</div>
+        <div class="ma-phase-title">Full Due<br>Diligence</div>
+        <p class="ma-phase-desc">Comprehensive assessment during the diligence window — policies, controls, architecture, and compliance posture.</p>
+        <div class="ma-phase-items">
+          <div class="ma-item">Security programme maturity scoring</div>
+          <div class="ma-item">Compliance gap analysis</div>
+          <div class="ma-item">Technical control assessment</div>
+          <div class="ma-item">Vendor/supply chain risk</div>
+        </div>
+      </div>
+      <div class="ma-phase">
+        <div class="ma-phase-num">03</div>
+        <div class="ma-phase-title">Risk<br>Quantification</div>
+        <p class="ma-phase-desc">Translate security findings into financial risk — so the deal team can price it into the transaction.</p>
+        <div class="ma-phase-items">
+          <div class="ma-item">Executive risk summary report</div>
+          <div class="ma-item">Remediation cost estimates</div>
+          <div class="ma-item">Deal condition recommendations</div>
+          <div class="ma-item">Cyber rep & warranty input</div>
+        </div>
+      </div>
+      <div class="ma-phase">
+        <div class="ma-phase-num">04</div>
+        <div class="ma-phase-title">Post-Close<br>Integration</div>
+        <p class="ma-phase-desc">Security programme stand-up for the acquired entity — from day-one quick wins to long-term integration roadmap.</p>
+        <div class="ma-phase-items">
+          <div class="ma-item">Day-1 security baseline</div>
+          <div class="ma-item">Integration security roadmap</div>
+          <div class="ma-item">Policy harmonisation</div>
+          <div class="ma-item">ISO 27001 fast-track readiness</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPLIANCE
+============================================================ -->
+<section class="compliance-section section-pad" id="compliance">
+  <div class="section-inner">
+    <div class="section-label fade-up">
+      <div class="sl-line"></div>
+      <span class="sl-text">Compliance &amp; Standards</span>
+    </div>
+    <h2 class="section-h2 fade-up">Every framework.<br>One consultant.</h2>
+    <p class="section-desc fade-up">Across IT, OT, AI, and data privacy — I navigate the full compliance landscape so you don't have to brief five different specialists.</p>
+
+    <div class="compliance-grid fade-up stagger">
+      <div class="fw-chip" style="--i:0">
+        <div class="fw-chip-badge" style="background:#EEE9FF;color:#3D2080">GDPR</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">GDPR / UK GDPR</div>
+          <div class="fw-chip-sub">EU & UK personal data protection</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:1">
+        <div class="fw-chip-badge" style="background:#E2F4EE;color:#0B5E48">27001</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">ISO 27001:2022</div>
+          <div class="fw-chip-sub">Information security management</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:2">
+        <div class="fw-chip-badge" style="background:#EEE9FF;color:#3D2080">42001</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">ISO 42001:2023</div>
+          <div class="fw-chip-sub">AI management system</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:3">
+        <div class="fw-chip-badge" style="background:#E0F4F4;color:#065C5C">NIS2</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">NIS2 Directive</div>
+          <div class="fw-chip-sub">EU network & information systems</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:4">
+        <div class="fw-chip-badge" style="background:#FBE9E9;color:#8B1A1A">HIPAA</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">HIPAA Security Rule</div>
+          <div class="fw-chip-sub">US health data protection</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:5">
+        <div class="fw-chip-badge" style="background:#FDF0E0;color:#7A3F00">PCI</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">PCI DSS v4.0</div>
+          <div class="fw-chip-sub">Payment card data security</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:6">
+        <div class="fw-chip-badge" style="background:#E6F0FA;color:#0C3D6B">SOC 2</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">SOC 2 Type II</div>
+          <div class="fw-chip-sub">US enterprise trust criteria</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:7">
+        <div class="fw-chip-badge" style="background:#E0F4F4;color:#065C5C">PIPA</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">PIPA / ISMS-P</div>
+          <div class="fw-chip-sub">South Korea personal data law</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:8">
+        <div class="fw-chip-badge" style="background:#FDF0E0;color:#7A3F00">62443</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">IEC 62443</div>
+          <div class="fw-chip-sub">OT / industrial control systems</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:9">
+        <div class="fw-chip-badge" style="background:#E6F0FA;color:#0C3D6B">NIST</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">NIST CSF 2.0</div>
+          <div class="fw-chip-sub">US cybersecurity framework</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:10">
+        <div class="fw-chip-badge" style="background:#E2F4EE;color:#0B5E48">CE+</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">Cyber Essentials Plus</div>
+          <div class="fw-chip-sub">UK government baseline scheme</div>
+        </div>
+      </div>
+      <div class="fw-chip" style="--i:11">
+        <div class="fw-chip-badge" style="background:#EEE9FF;color:#3D2080">AI Act</div>
+        <div class="fw-chip-content">
+          <div class="fw-chip-name">EU AI Act</div>
+          <div class="fw-chip-sub">Mandatory AI regulation from 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2rem">
+      <a href="framework-matcher.html" class="btn-ghost">→ Use the free framework matcher tool</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS
+============================================================ -->
+<section class="process-section section-pad">
+  <div class="section-inner">
+    <div class="section-label fade-up">
+      <div class="sl-line"></div>
+      <span class="sl-text">How it works</span>
+    </div>
+    <h2 class="section-h2 fade-up">From first call<br>to remediation</h2>
+    <p class="section-desc fade-up">A clear, structured engagement — no drawn-out discovery phases, no surprise scope changes.</p>
+
+    <div class="process-steps fade-up stagger">
+      <div class="process-step" style="--i:0">
+        <div class="ps-num">1</div>
+        <div class="ps-title">Free scoping call</div>
+        <p class="ps-desc">30 minutes — understand your environment, goals, and obligations. No sales pitch. I'll tell you exactly what you need and what it will take.</p>
+      </div>
+      <div class="process-step" style="--i:1">
+        <div class="ps-num">2</div>
+        <div class="ps-title">Gap assessment</div>
+        <p class="ps-desc">Structured assessment delivered within 2–4 weeks depending on scope. Workshops, document reviews, technical interviews.</p>
+      </div>
+      <div class="process-step" style="--i:2">
+        <div class="ps-num">3</div>
+        <div class="ps-title">Roadmap & report</div>
+        <p class="ps-desc">A clear findings report with prioritised remediation items, effort estimates, and a sequenced 90-day action plan. Board-presentable.</p>
+      </div>
+      <div class="process-step" style="--i:3">
+        <div class="ps-num">4</div>
+        <div class="ps-title">Remediation support</div>
+        <p class="ps-desc">Optional ongoing support through remediation, audit preparation, and certification — or hand off to your team. Your choice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RESOURCES
+============================================================ -->
+<section class="resources-section section-pad" id="resources">
+  <div class="section-inner">
+    <div class="section-label fade-up">
+      <div class="sl-line"></div>
+      <span class="sl-text">Free resources</span>
+    </div>
+    <h2 class="section-h2 fade-up">Start here.<br>No strings.</h2>
+    <p class="section-desc fade-up">Six free tools to assess your risk, understand your obligations, and build your knowledge — before you spend a penny on consulting.</p>
+
+    <div class="resources-grid fade-up stagger">
+      <a href="cyber-risk-quiz.html" class="resource-card" style="--i:0">
+        <div class="rc-tag">Interactive quiz · 3 min</div>
+        <div class="rc-title">Cyber Risk Score</div>
+        <p class="rc-desc">10 questions, personalised risk score across 6 security domains. Email-gated report with key findings and recommended next steps.</p>
+        <div class="rc-action">Take the quiz →</div>
+      </a>
+      <a href="framework-matcher.html" class="resource-card" style="--i:1">
+        <div class="rc-tag">Interactive tool · 2 min</div>
+        <div class="rc-title">Framework Matcher</div>
+        <p class="rc-desc">Answer 4 questions about your industry, region, and goals — get a personalised map of mandatory and recommended compliance frameworks.</p>
+        <div class="rc-action">Find your frameworks →</div>
+      </a>
+      <a href="iso27001-checklist.html" class="resource-card" style="--i:2">
+        <div class="rc-tag">Interactive checklist</div>
+        <div class="rc-title">ISO 27001 Readiness</div>
+        <p class="rc-desc">Self-assess across all 93 Annex A controls. Mark each as Done, Partial, or Gap. Your readiness score updates in real time.</p>
+        <div class="rc-action">Start self-assessment →</div>
+      </a>
+      <a href="iso42001-checklist.html" class="resource-card" style="--i:3">
+        <div class="rc-tag">Interactive checklist</div>
+        <div class="rc-title">ISO 42001 AI Readiness</div>
+        <p class="rc-desc">Assess your AI governance maturity against the world's first certifiable AI management standard — 38 controls across 7 clauses.</p>
+        <div class="rc-action">Assess AI governance →</div>
+      </a>
+      <a href="ai-security-cheatsheet.html" class="resource-card" style="--i:4">
+        <div class="rc-tag">Reference guide</div>
+        <div class="rc-title">AI Security Cheat Sheet</div>
+        <p class="rc-desc">12 highest-impact AI threats mapped to OWASP LLM Top 10 and NIST AI RMF — with practical mitigations for each. Dark mode, filterable.</p>
+        <div class="rc-action">View cheat sheet →</div>
+      </a>
+      <a href="compliance-comparison.html" class="resource-card" style="--i:5">
+        <div class="rc-tag">Reference guide</div>
+        <div class="rc-title">Compliance Comparison</div>
+        <p class="rc-desc">GDPR, ISO 27001, SOC 2, HIPAA, PCI DSS, NIS2, ISO 42001 and more — compared side by side with sector-specific application guidance.</p>
+        <div class="rc-action">Compare frameworks →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COACHING
+============================================================ -->
+<section class="coaching-section section-pad" id="coaching">
+  <div class="section-inner">
+    <div class="coaching-inner">
+      <div class="fade-up">
+        <div class="section-label">
+          <div class="sl-line"></div>
+          <span class="sl-text">Cyber Career Coaching</span>
+        </div>
+        <h2 class="section-h2">Breaking into<br>cyber is<br>learnable.</h2>
+        <p class="section-desc" style="margin-bottom:1.5rem">I coach career changers and students making the move into cybersecurity — with structured guidance, honest advice on certifications, and the perspective of someone who's worked across IT, OT, GRC, and M&amp;A.</p>
+
+        <div class="coaching-paths">
+          <div class="coaching-path">
+            <div class="cp-icon">🔄</div>
+            <div>
+              <div class="cp-title">Career changers</div>
+              <p class="cp-desc">Coming from IT, finance, law, or something completely different — I'll map your transferable skills and build the fastest credible path in.</p>
+            </div>
+          </div>
+          <div class="coaching-path">
+            <div class="cp-icon">🎓</div>
+            <div>
+              <div class="cp-title">Students & graduates</div>
+              <p class="cp-desc">Which certs, in which order, for which role. CV review, interview prep, and the honest truth about what actually gets you hired.</p>
+            </div>
+          </div>
+          <div class="coaching-path">
+            <div class="cp-icon">📈</div>
+            <div>
+              <div class="cp-title">Specialists targeting senior roles</div>
+              <p class="cp-desc">Moving from technical into GRC, management, or vCISO? I've navigated that transition — and I can help you position yourself credibly.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem">
+          <a href="cyber-career-mindmap.html" class="btn-ghost" style="display:inline-flex">
+            Explore the career mindmap →
+          </a>
+        </div>
+      </div>
+
+      <div class="coaching-offer fade-up" style="transition-delay:.15s">
+        <h3>Career clarity session</h3>
+        <p>A 30-minute career mapping session — your background, your goals, and the honest fastest path from here to your first (or next) cyber role.</p>
+        <div class="coaching-includes">
+          <div class="ci"><span class="ci-check">✓</span> Role and specialisation mapping</div>
+          <div class="ci"><span class="ci-check">✓</span> Certification priority sequence</div>
+          <div class="ci"><span class="ci-check">✓</span> Transferable skills audit</div>
+          <div class="ci"><span class="ci-check">✓</span> CV and LinkedIn positioning</div>
+          <div class="ci"><span class="ci-check">✓</span> 90-day action plan</div>
+        </div>
+        <a href="https://tidycal.com/1hannajylee" class="btn-primary" target="_blank" style="width:100%;justify-content:center">
+          Book your career clarity session
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <p style="font-size:11px;color:var(--text-dim);text-align:center;margin-top:.75rem;font-family:var(--font-mono);letter-spacing:.04em">NO COST · NO COMMITMENT · 30 MINUTES</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+============================================================ -->
+<section class="cta-banner">
+  <div class="cta-banner-inner">
+    <div>
+      <h2 class="cta-h2">Ready to close<br>the <span class="ca">gap?</span></h2>
+      <p class="cta-sub">Whether you're navigating NIS2, preparing for an acquisition, securing your OT environment, or just starting the ISO 27001 journey — the first conversation is free and agenda-free.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="https://tidycal.com/1hannajylee" class="btn-primary" target="_blank" style="font-size:15px;padding:15px 32px">
+        Book a Discovery Session
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="mailto:you@yourdomain.com" class="btn-ghost">Or email directly →</a>
+      <div class="cta-note">Typically responds within 24 hours</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">// <span>Your Name</span> Cybersecurity</div>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#itot">IT/OT</a>
+      <a href="#ma">M&A</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#resources">Resources</a>
+      <a href="#coaching">Coaching</a>
+      <a href="mailto:you@yourdomain.com">Contact</a>
+    </div>
+    <div class="footer-copy">© 2025 Your Name · Seoul, Korea · Global</div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+============================================================ -->
 <script>
-/* TYPING */
-const text = "Cybersecurity Consulting & Coaching";
-let i = 0;
-function type() {
-  if (i < text.length) {
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(type, 40);
-  }
-}
-type();
-
-/* SCROLL REVEAL */
-const observer = new IntersectionObserver(entries => {
+// Intersection observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Don't unobserve — keep it visible
     }
   });
-});
-document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-</script>
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
+document.querySelectorAll('.fade-up').forEach((el, i) => {
+  observer.observe(el);
+});
+
+// Stagger children animation delays
+document.querySelectorAll('.stagger').forEach(container => {
+  [...container.children].forEach((child, i) => {
+    child.style.setProperty('--i', i);
+  });
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.style.color = link.getAttribute('href') === `#${entry.target.id}`
+          ? 'var(--text)' : '';
+      });
+    }
+  });
+}, { threshold: 0.4 });
+
+sections.forEach(s => sectionObserver.observe(s));
+</script>
 </body>
 </html>
