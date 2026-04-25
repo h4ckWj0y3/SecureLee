@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>h4ckwj0y3 | Cybersecurity Consulting</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: black;
+  color: #00ff9f;
+  overflow-x: hidden;
+}
+
+/* MATRIX BACKGROUND */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* LAYOUT */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+/* TEXT */
+h1 {
+  font-size: 2.5em;
+  text-shadow: 0 0 10px #00ff9f;
+}
+
+h2 {
+  margin-top: 60px;
+  text-shadow: 0 0 5px #00ff9f;
+}
+
+p {
+  color: #cbd5e1;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #00ff9f;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  box-shadow: 0 0 15px #00ff9f;
+}
+
+/* CARDS */
+.card {
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #00ff9f;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+/* TYPING */
+#typing {
+  border-right: 2px solid #00ff9f;
+  padding-right: 5px;
+}
+
+/* SCROLL ANIMATION */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MARQUEE */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 10px 0;
+}
+
+.marquee-content span {
+  margin: 0 20px;
+  border: 1px solid #00ff9f;
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+
+.marquee-left .marquee-content {
+  display: inline-block;
+  animation: left 25s linear infinite;
+}
+
+.marquee-right .marquee-content {
+  display: inline-block;
+  animation: right 25s linear infinite;
+}
+
+@keyframes left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+<h1 id="typing"></h1>
+
+<p class="hidden">
+Cybersecurity & Compliance That Actually Reduces Risk across IT, OT, Cloud & AI.
+</p>
+
+<a href="https://tidycal.com/1hannajylee" class="btn hidden">Book a Free Call</a>
+
+<h2 class="hidden">Why Work With Me</h2>
+
+<div class="card hidden">
+<p>✔ IT & OT Security Experience</p>
+<p>✔ M&A Cybersecurity Expertise</p>
+<p>✔ Risk-Focused Approach</p>
+<p>✔ Real-World Strategies</p>
+</div>
+
+<h2 class="hidden">For Organizations</h2>
+
+<div class="card hidden">
+<ul>
+<li>Cybersecurity Assessments</li>
+<li>ISO 27001 Readiness</li>
+<li>Risk Management</li>
+<li>M&A Cybersecurity</li>
+<li>AI Security</li>
+</ul>
+</div>
+
+<a href="https://tidycal.com/1hannajylee" class="btn hidden">Discuss Security Needs</a>
+
+<h2 class="hidden">For Individuals</h2>
+
+<div class="card hidden">
+<ul>
+<li>Career Roadmap</li>
+<li>Hands-on Guidance</li>
+<li>Interview Prep</li>
+</ul>
+</div>
+
+<a href="https://tidycal.com/1hannajylee" class="btn hidden">Start Your Journey</a>
+
+<h2 class="hidden">Frameworks & Standards</h2>
+
+<div class="marquee marquee-left">
+<div class="marquee-content">
+<span>ISO 27001</span><span>NIST</span><span>CIS</span><span>GDPR</span>
+<span>ISO 27001</span><span>NIST</span><span>CIS</span><span>GDPR</span>
+</div>
+</div>
+
+<div class="marquee marquee-right">
+<div class="marquee-content">
+<span>OWASP</span><span>MITRE</span><span>PCI DSS</span>
+<span>OWASP</span><span>MITRE</span><span>PCI DSS</span>
+</div>
+</div>
+
+<h2 class="hidden">Let’s Secure What Matters</h2>
+
+<a href="https://tidycal.com/1hannajylee" class="btn hidden">Book Your Call</a>
+
+</div>
+
+<script>
+/* TYPING EFFECT */
+const text = "h4ckwj0y3 // Cybersecurity Consulting";
+let i = 0;
+function type() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type, 50);
+  }
+}
+type();
+
+/* SCROLL REVEAL */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+
+/* MATRIX EFFECT */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "01";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+const drops = Array.from({length: columns}).fill(1);
+
+function draw(){
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle = "#00ff9f";
+  ctx.font = fontSize + "px monospace";
+
+  for(let i=0;i<drops.length;i++){
+    const text = letters[Math.floor(Math.random()*letters.length)];
+    ctx.fillText(text, i*fontSize, drops[i]*fontSize);
+
+    if(drops[i]*fontSize > canvas.height && Math.random()>0.975){
+      drops[i] = 0;
+    }
+    drops[i]++;
+  }
+}
+
+setInterval(draw, 33);
+</script>
+
+</body>
+</html>
