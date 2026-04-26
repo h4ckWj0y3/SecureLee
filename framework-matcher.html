@@ -104,8 +104,8 @@ footer a{color:var(--green-bright);text-decoration:none}
 </head>
 <body>
 <nav>
-  <a href="#" class="logo">// <em>Your Name</em> Cybersecurity</a>
-  <a href="https://calendly.com/YOUR-LINK" class="nav-btn" target="_blank">Book a free call</a>
+  <a href="#" class="logo">// <em>SecureLee</em> Cybersecurity</a>
+  <a href="https://calendly.com/YOUR-LINK" class="nav-btn" target="_blank">Book a session</a>
 </nav>
 
 <div class="hero">
@@ -119,7 +119,7 @@ footer a{color:var(--green-bright);text-decoration:none}
   <div id="wizard-content"></div>
 </div>
 
-<footer>© 2025 <a href="#">Your Name Cybersecurity</a> · Free resource — share freely · <a href="mailto:you@yourdomain.com">Get expert guidance</a></footer>
+<footer>© 2025 <a href="#">SecureLee Cybersecurity</a> · Free resource — share freely · <a href="mailto:you@yourdomain.com">Get expert guidance</a></footer>
 
 <script>
 const steps=[
@@ -319,7 +319,7 @@ function showResults(){
     html+=`<div style="font-size:12px;font-family:'DM Mono',monospace;color:var(--ink3);letter-spacing:.04em;margin:1.5rem 0 .75rem">RECOMMENDED FOR YOUR PROFILE</div>`;
   }
   recommended.slice(0,5).forEach(name=>html+=renderFwCard(name,'recommended'));
-  html+=`<div class="cta-box"><div style="flex:1"><h3>Want expert guidance on where to start?</h3><p>A free 30-minute call will map your exact obligations, prioritise by risk and effort, and give you a clear roadmap — no jargon, no sales pitch.</p></div><a href="https://calendly.com/YOUR-LINK" target="_blank">Book a free strategy call</a></div>`;
+  html+=`<div class="cta-box"><div style="flex:1"><h3>Want expert guidance on where to start?</h3><p>A 30-minute session to map your exact obligations, prioritise by risk and effort, and give you a clear roadmap — no jargon, no sales pitch.</p></div><a href="https://tidycal.com/1hannajylee" target="_blank">Book a session</a></div>`;
   html+=`<div style="text-align:center;margin-top:1.5rem"><button class="btn btn-ghost" onclick="restart()">Start over</button></div>`;
   document.getElementById('wizard-content').innerHTML=html;
 }
